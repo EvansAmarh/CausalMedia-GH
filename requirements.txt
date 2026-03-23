@@ -1,0 +1,10 @@
+dowhy==0.11.4
+econml==0.15.1
+shap==0.44.1
+sdv==1.13.0
+scipy
+pandas
+scikit-learn
+matplotlib
+seaborn
+joblib 
