@@ -1,2 +1,2 @@
 # CausalMedia-GH
-To estimate the true causal effect of video engagement on student performance in Senior High Schools (SHS), while correcting for selection bias: where more motivated or capable students are naturally more likely to engage.
+Causal ML study of multimedia learning effects, EdNet KT1. Seeds: 42, 123, 777. Pre-registered on OSF.
