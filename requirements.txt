@@ -1,7 +1,7 @@
 dowhy==0.14
 econml==0.16.0
-shap==0.47
-sdv==1.13.0
+shap>=0.47
+sdv>=1.13.0
 lightgbm
 sensemakr
 scipy
