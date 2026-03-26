@@ -1,7 +1,9 @@
-dowhy==0.11.4
-econml==0.15.1
-shap==0.44.1
+dowhy==0.14
+econml==0.16.0
+shap==0.47
 sdv==1.13.0
+lightgbm
+sensemakr
 scipy
 pandas
 scikit-learn
