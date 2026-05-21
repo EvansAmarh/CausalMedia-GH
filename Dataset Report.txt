@@ -1,0 +1,59 @@
+This guide explains, in simple terms, how the EdNet KT1 dataset was cleaned and prepared for
+analysis. The EdNet KT1 dataset contains records of students interacting with an online learning
+platform — things like which questions they answered, whether they got them right, and how long
+they spent on each question.
+Before we could analyse anything, the raw data needed to be organised and checked for errors.
+This document walks through exactly what was done and why.
+What Did the Raw Data Look Like?
+The raw data was a large table of individual interactions. Every row represented one moment a
+student answered a question. It included:
+• Which student answered (student ID)
+• Which question they answered (question ID)
+• Whether they got it right or wrong
+• How long they took to answer (in milliseconds)
+• What day of their learning journey it was
+The problem with this format is that one student could have thousands of rows. To make it useful for
+analysis, we needed to summarise each student into a single row with meaningful numbers.
+What Did We Do to Clean It?
+We went through several steps to turn the raw interaction logs into a clean, analysis-ready table.
+Here is each step explained simply:
+Step 1 — We Decided on a 30-Day Window
+We chose to only look at the first 30 days of each student's activity. This is equivalent to one
+calendar month, which is a sensible and standard period for measuring learning engagement. Any
+interactions recorded after day 30 were excluded from most calculations.
+Step 2 — We Created Summary Scores for Each Student
+For each student, we calculated 9 summary scores (called features). Think of these like a student's
+report card — each number tells us something different about how they used the platform:
+• Multimedia Engagement — how much of their time was spent on multimedia content
+• Performance Gain — did they improve? Measured by comparing early vs late accuracy
+• Prior Achievement — how well they performed in their first week (days 1–7)
+• Consistency — how steady their daily accuracy was from day to day
+• Early Struggle — how well they performed in their first 3 days
+• Skill Coverage — how many different question topics they attempted
+• Average Session Duration — the average time spent per question in milliseconds
+• Total Interactions — the total number of questions they attempted overall
+• Peer Collaboration — the proportion of the 30-day window during which they were active
+Step 3 — We Checked for Missing Values
+After building the summary table, we checked every column for missing values. Any student row
+with missing data was removed. After this check, the final dataset had zero missing values across
+all columns — every student had a complete set of scores.
+Step 4 — We Validated the Numbers
+We ran an automatic check to make sure all numbers were within sensible ranges. For example,
+any score representing a proportion should be between 0 and 1 — never higher. This check caught
+two problems.
+Problems Found and How We Fixed Them
+Problem 1 — Peer Collaboration Was Going Above 1.0
+What went wrong: Some students had values like 3.63 or 1.67 for peer
+collaboration. A proportion cannot be greater than 1.0.
+Why it happened: The calculation was counting interactions from days 31, 40, 50
+and beyond — outside our 30-day window. Students with a lot of late activity looked
+falsely over-engaged.
+How we fixed it: We added a filter to only count days within the first 30 days, then
+added a safety cap so the result can never exceed 1.0.
+Problem 2 — Consistency Scores Were Not Properly Scaled
+What went wrong: The consistency score had a maximum value of 0.558 instead of
+1.0. The checker flagged this because all proportion-style scores should be able to
+reach 1.0.
+Why it happened: Consistency was calculated as a raw standard deviation, which is
+not naturally bounded between 0 and 1.
+How we fixed it: We normalised the consistency scores by dividing
