@@ -1,0 +1,4 @@
+CTGAN Score: 0.8213649999999999
+Gaussian Copula Score: 0.809739
+Best Model: CTGAN
+Best Score: 0.8213649999999999
