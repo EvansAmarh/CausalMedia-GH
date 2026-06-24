@@ -1,27 +1,27 @@
 {
+  "n_students": 10000,
   "test_1_placebo": {
     "name": "Placebo Treatment Refuter",
     "pass_condition": "Placebo ATE < 0.01",
-    "result": 0.001778,
+    "result": 0.009919,
     "status": "PASS"
   },
   "test_2_random_cause": {
     "name": "Random Common Cause Refuter",
     "pass_condition": "ATE change < 5%",
-    "result": "0.30% change",
+    "result": "0.00% change",
     "status": "PASS"
   },
   "test_3_subset": {
     "name": "Data Subset Refuter",
     "pass_condition": "Std within 10% of ATE",
-    "result": 0.029634,
-    "status": "FAIL \u2014 document as limitation (small n)"
+    "result": 0.4031,
+    "status": "FAIL \u2014 document as limitation"
   },
   "test_4_bootstrap": {
     "name": "Bootstrap Refuter",
     "pass_condition": "95% CI excludes zero",
-    "result": 0.0291,
+    "result": 0.3949,
     "status": "PASS"
-  },
-  "overall_verdict": "CONFIRMED DIRECTIONAL FINDING \u2014 all failures are expected at n=1,838 and must be reported as limitations, not model errors."
+  }
 }
