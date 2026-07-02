@@ -1,0 +1,17 @@
+{
+  "results": [
+    {
+      "model": "CTGAN",
+      "overall_quality_score": 0.8846,
+      "column_shapes_score": 0.9121,
+      "column_pair_trends_score": 0.857
+    },
+    {
+      "model": "Gaussian Copula",
+      "overall_quality_score": 0.9948,
+      "column_shapes_score": 0.9973,
+      "column_pair_trends_score": 0.9923
+    }
+  ],
+  "selected_model": "Gaussian Copula"
+}
