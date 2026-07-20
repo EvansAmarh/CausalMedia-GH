@@ -1,0 +1,24 @@
+{
+    "primary_key": "student_id",
+    "METADATA_SPEC_VERSION": "SINGLE_TABLE_V1",
+    "columns": {
+        "student_id": {
+            "sdtype": "id"
+        },
+        "location": {
+            "sdtype": "categorical"
+        },
+        "tablet_access": {
+            "sdtype": "categorical"
+        },
+        "bandwidth": {
+            "sdtype": "categorical"
+        },
+        "resource_level": {
+            "sdtype": "categorical"
+        },
+        "teacher_qualification": {
+            "sdtype": "categorical"
+        }
+    }
+}
