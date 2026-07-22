@@ -1,0 +1,17 @@
+{
+  "wilcoxon_statistic": 0.0,
+  "wilcoxon_p": 9.0,
+  "cohens_d": 3.402,
+  "cohens_d_interpretation": "Large",
+  "cronbach_alpha": 0.354,
+  "sus_scores": [
+    75.0,
+    75.0,
+    85.0
+  ],
+  "sus_mean": 78.3,
+  "sus_verdict": "Good",
+  "mean_comp_condition_a": 1.767,
+  "mean_comp_condition_b": 3.7,
+  "note": "n=3 teachers \u2014 exploratory only. Full study needs n>=28."
+}
