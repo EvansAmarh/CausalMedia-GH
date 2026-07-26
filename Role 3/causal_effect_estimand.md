@@ -18,11 +18,30 @@ The notebook constructs a rigorous **Structural Causal Model (SCM)** with the fo
 | **Confounders ($W$)** | `prior_achievement`, `bandwidth_category`, `early_struggle`, `consistency`, `tablet_access`, etc. |
 | **Outcome-Only** | `teacher_qual` (Affects $Y$ but not $T$). |
 
-## 2. Identification Strategy
-The notebook applies the **Backdoor Criterion** to verify if the causal effect is identifiable from the data. 
+## 2.7 Identification Strategy
+The notebook applies the **Backdoor Criterion** to verify if the causal effect is identifiable from the data.
+
+**Equation 1**
+
+$$
+\mathbb{E}[Y(t)-Y(0)]
+=
+\mathbb{E}_{X}\!\left[
+\mathbb{E}[Y \mid T=t, X]
+-
+\mathbb{E}[Y \mid T=0, X]
+\right].
+\tag{1}
+$$
+
+Here, $Y(t)$ is a student's potential performance gain under multimedia exposure level $t$; $Y(0)$ is the same student's potential performance gain under the reference exposure level 0; $T$ is the observed continuous multimedia ratio; $t$ is the exposure level being contrasted with 0; $X$ is the vector of observed pre-treatment adjustment variables in the DAG; $\mathbb{E}[\cdot]$ denotes expectation; and $\mathbb{E}_{X}[\cdot]$ averages the conditional contrast over the observed distribution of $X$.
 
 - **Backdoor Adjustment**: The model confirms that by adjusting for the 12 identified confounders, all "backdoor paths" (spurious correlations) between Multimedia Ratio and Performance Gain are blocked.
-- **Unconfoundedness Assumption**: The identification relies on the assumption that no unobserved variables ($U$) simultaneously influence both the treatment and the outcome.
+- **Unconfoundedness Assumption**: Conditional on the measured pre-treatment covariates $X$, treatment assignment is independent of the potential outcomes, $Y(t) \perp T \mid X$ for every exposure level $t$. Equivalently, after adjustment for $X$, no unobserved variable $U$ jointly causes multimedia exposure and performance gain. Together with consistency, positivity, and no interference, this assumption identifies Equation 1 from the observed data.
+
+`teacher_qual` is modeled as an outcome-only predictor because teacher quality plausibly affects student performance gain, while multimedia exposure is recorded from students' platform activity and is not assigned by teacher quality in the study design.
+
+Because the student and synthetic school files use independently generated identifiers, the notebook reproducibly assigns a fixed-seed sample of school profiles to the 10,000 student rows rather than claiming an unsupported key-based linkage.
 
 ## 3. Key Deliverables
 - **Formal Estimand**: Generates a non-parametric expression for the Average Treatment Effect (ATE), saved as `identified_estimand.txt`.
