@@ -1,0 +1,13 @@
+feature,mean_abs_shap,rank
+session_duration_avg,0.06205168521506547,1
+content_modality_preference,0.05174626826371644,2
+early_struggle,0.039499450673576394,3
+prior_achievement,0.038984933539223596,4
+peer_activity_index,0.03748802862035658,5
+consistency,0.024828364129146976,6
+bandwidth_category,0.013689552376150644,7
+skill_coverage,0.010532092549317846,8
+teacher_qual,0.010262595420975362,9
+tablet_access,0.007104582250082329,10
+school_resource_level,0.005072437527252953,11
+peer_collaboration,0.0033073948204805476,12
