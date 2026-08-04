@@ -1,12 +1,48 @@
+# ==========================================================
+# CausalMedia-GH — Python Dependencies (Roles 1-5)
+# NexusLearn Group 4 | KNUST Department of Computer Science
+# ==========================================================
+
+# --- Core data handling ---
+pandas
+numpy
+scipy
+joblib
+
+# --- Machine learning / nuisance models ---
+scikit-learn
+lightgbm
+
+# --- Causal inference (Roles 3-4) ---
 dowhy==0.14
 econml==0.16.0
+networkx
+statsmodels
+
+# --- Explainability & sensitivity (Role 5) ---
 shap>=0.47
-sdv>=1.13.0
-lightgbm
 sensemakr
-scipy
-pandas
-scikit-learn
+
+# --- Synthetic data generation (Role 2) ---
+sdv>=1.13.0
+
+# --- Statistical validation (HCAI evaluation, Role 5) ---
+pingouin
+
+# --- Visualization ---
 matplotlib
 seaborn
-joblib 
+
+# --- Reporting (teacher_dashboard.pdf, Role 5) ---
+reportlab
+
+# --- Data ingestion utilities ---
+gdown
+
+# --- Notebook environment (local reproduction of Colab notebooks) ---
+jupyter
+ipykernel
+notebook
+
+# --- Progress / QoL utilities ---
+tqdm
