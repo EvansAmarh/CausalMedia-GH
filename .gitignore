@@ -1,4 +1,33 @@
+# --- ML pipeline ---
 *.pkl
 *.joblib
+
+# --- Python ---
 __pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# --- Jupyter / Colab ---
 .ipynb_checkpoints/
+
+# --- Data ---
+*.npz
+data/raw/
+studentVle.csv
+studentAssessment.csv
+assessments.csv
+studentInfo.csv
+studentRegistration.csv
+courses.csv
+vle.csv
+ihdp_train.npz
+ihdp_test.npz
+
+
+# --- OS / editor noise ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
