@@ -2,47 +2,48 @@
 # CausalMedia-GH — Python Dependencies (Roles 1-5)
 # NexusLearn Group 4 | KNUST Department of Computer Science
 # ==========================================================
-
 # --- Core data handling ---
 pandas
 numpy
 scipy
 joblib
-
 # --- Machine learning / nuisance models ---
+# Nuisance models (outcome and treatment) use scikit-learn's
+# HistGradientBoostingRegressor / GradientBoostingRegressor throughout
+# (Methods M14). No LightGBM call appears anywhere in the pipeline; it is
+# not listed here as a direct dependency (it installs automatically as
+# econml's own internal dependency).
 scikit-learn
-lightgbm
-
 # --- Causal inference (Roles 3-4) ---
 dowhy==0.14
-econml==0.16.0
+econml==0.17.0
 networkx
-statsmodels
-
-# --- Explainability & sensitivity (Role 5) ---
+# --- Explainability (Role 5) ---
+# Computed via EconML's native shap_values() method (Methods M17); shap
+# itself is not directly imported in any notebook but is required by
+# econml to support that method.
 shap>=0.47
-sensemakr
-
-# --- Synthetic data generation (Role 2) ---
-sdv>=1.13.0
-
-# --- Statistical validation (HCAI evaluation, Role 5) ---
-pingouin
-
+# --- Ground-truth benchmark (Role 2) ---
+# IHDP is downloaded directly (urllib.request, fredjo.com), not
+# synthetically generated — no synthetic-data-generation library required.
 # --- Visualization ---
 matplotlib
-seaborn
-
-# --- Reporting (teacher_dashboard.pdf, Role 5) ---
-reportlab
-
 # --- Data ingestion utilities ---
 gdown
-
 # --- Notebook environment (local reproduction of Colab notebooks) ---
 jupyter
 ipykernel
 notebook
-
 # --- Progress / QoL utilities ---
 tqdm
+
+# ==========================================================
+# Planned but not yet used in any executed notebook — needed only once
+# the corresponding work is actually run. Uncomment when that happens.
+# ==========================================================
+# statsmodels        # not currently called anywhere
+# seaborn            # only matplotlib.pyplot is used in any notebook so far
+# pingouin           # HCAI analysis (Role 5, Section 6.4) currently uses
+#                    # scipy.stats.wilcoxon + manual Cronbach's alpha, not pingouin
+# sensemakr          # no sensitivity-analysis workflow currently uses it
+# reportlab          # teacher_dashboard.pdf — Role 5 memo marks this NOT DONE
